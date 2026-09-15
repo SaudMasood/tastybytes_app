@@ -7,15 +7,8 @@ import '../bloc/cart_bloc.dart';
 import '../bloc/cart_event.dart';
 import '../bloc/cart_state.dart';
 
-class CartScreen extends StatefulWidget {
+class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
-
-  @override
-  State<CartScreen> createState() => _CartScreenState();
-}
-
-class _CartScreenState extends State<CartScreen> {
-  bool isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,48 +17,14 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: Colors.amber,
         foregroundColor: Colors.black,
         elevation: 0,
-        centerTitle: false,
-        titleSpacing: 16.w,
-        title: Row(
-          children: [
-            Container(
-              width: 42.w,
-              height: 42.h,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                Icons.shopping_cart,
-                color: Colors.amber.shade800,
-                size: 23.sp,
-              ),
-            ),
-
-            SizedBox(width: 10.w),
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Your Order',
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    color: Colors.black54,
-                  ),
-                ),
-                Text(
-                  'My Cart 🛒',
-                  style: TextStyle(
-                    fontSize: 19.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ],
+        title: const Text(
+          'My Cart 🛒',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
+
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
           if (state.items.isEmpty) {
@@ -102,27 +61,29 @@ class _CartScreenState extends State<CartScreen> {
 
                     return Container(
                       margin: EdgeInsets.only(bottom: 12.h),
-                      padding: EdgeInsets.all(15.w),
+                      padding: EdgeInsets.all(12.w),
                       decoration: BoxDecoration(
                         color: Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(15.r),
                       ),
+
                       child: Row(
                         children: [
                           Container(
-                            width: 65.w,
-                            height: 65.h,
+                            width: 60.w,
+                            height: 60.h,
                             decoration: BoxDecoration(
                               color: Colors.amber,
-                              borderRadius: BorderRadius.circular(12.r),
+                              borderRadius:
+                              BorderRadius.circular(12.r),
                             ),
                             child: Icon(
                               icon,
-                              size: 35.sp,
+                              size: 30.sp,
                             ),
                           ),
 
-                          SizedBox(width: 12.w),
+                          SizedBox(width: 10.w),
 
                           Expanded(
                             child: Column(
@@ -132,17 +93,11 @@ class _CartScreenState extends State<CartScreen> {
                                 Text(
                                   name,
                                   style: TextStyle(
-                                    fontSize: 17.sp,
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 5.h),
-                                Text(
-                                  price,
-                                  style: TextStyle(
-                                    fontSize: 15.sp,
-                                  ),
-                                ),
+                                Text(price),
                               ],
                             ),
                           ),
@@ -153,18 +108,10 @@ class _CartScreenState extends State<CartScreen> {
                                 DecreaseCartQuantity(index),
                               );
                             },
-                            icon: const Icon(
-                              Icons.remove,
-                            ),
+                            icon: const Icon(Icons.remove),
                           ),
 
-                          Text(
-                            '$quantity',
-                            style: TextStyle(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text('$quantity'),
 
                           IconButton(
                             onPressed: () {
@@ -172,9 +119,7 @@ class _CartScreenState extends State<CartScreen> {
                                 IncreaseCartQuantity(index),
                               );
                             },
-                            icon: const Icon(
-                              Icons.add,
-                            ),
+                            icon: const Icon(Icons.add),
                           ),
 
                           IconButton(
@@ -197,16 +142,6 @@ class _CartScreenState extends State<CartScreen> {
 
               Container(
                 padding: EdgeInsets.all(16.w),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 5,
-                      offset: const Offset(0, -2),
-                      color: Colors.grey.shade300,
-                    ),
-                  ],
-                ),
                 child: Column(
                   children: [
                     Row(
@@ -233,131 +168,75 @@ class _CartScreenState extends State<CartScreen> {
 
                     SizedBox(height: 12.h),
 
-                    AnimatedScale(
-                      scale: isPressed ? 0.92 : 1.0,
-                      duration:
-                      const Duration(milliseconds: 120),
-                      curve: Curves.easeOut,
+                    GestureDetector(
+                      onTap: () async {
+                        context.read<CartBloc>().add(
+                          CheckoutPressed(),
+                        );
 
-                      child: AnimatedContainer(
-                        duration:
-                        const Duration(milliseconds: 200),
-                        curve: Curves.easeInOut,
+                        await Future.delayed(
+                          const Duration(seconds: 2),
+                        );
 
-                        width: double.infinity,
-                        height: isPressed ? 50.h : 55.h,
+                        if (!context.mounted) return;
 
-                        decoration: BoxDecoration(
-                          color: isPressed
-                              ? Colors.amber.shade700
-                              : Colors.amber,
+                        context.read<CartBloc>().add(
+                          CheckoutReset(),
+                        );
 
-                          borderRadius: BorderRadius.circular(
-                            isPressed ? 18.r : 12.r,
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                CheckoutScreen(
+                                  total: total,
+                                ),
                           ),
+                        );
+                      },
 
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: isPressed ? 3 : 10,
-                              offset: Offset(
-                                0,
-                                isPressed ? 2 : 5,
-                              ),
-                              color: Colors.grey.shade400,
-                            ),
-                          ],
-                        ),
+                      child: AnimatedScale(
+                        scale: state.isPressed ? 0.92 : 1.0,
+                        duration:
+                        const Duration(milliseconds: 300),
 
-                        child: GestureDetector(
-                          onTapDown: (_) {
-                            setState(() {
-                              isPressed = true;
-                            });
-                          },
+                        child: AnimatedContainer(
+                          duration:
+                          const Duration(milliseconds: 300),
+                          width: double.infinity,
+                          height: 55.h,
 
-                          onTapUp: (_) {
-                            setState(() {
-                              isPressed = false;
-                            });
-
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    CheckoutScreen(
-                                      total: total,
-                                    ),
-                              ),
-                            );
-                          },
-
-                          onTapCancel: () {
-                            setState(() {
-                              isPressed = false;
-                            });
-                          },
+                          decoration: BoxDecoration(
+                            color: state.isPressed
+                                ? Colors.green
+                                : Colors.amber,
+                            borderRadius:
+                            BorderRadius.circular(15.r),
+                          ),
 
                           child: Center(
                             child: AnimatedSwitcher(
                               duration:
-                              const Duration(milliseconds: 200),
+                              const Duration(milliseconds: 300),
 
-                              transitionBuilder:
-                                  (child, animation) {
-                                return ScaleTransition(
-                                  scale: animation,
-                                  child: FadeTransition(
-                                    opacity: animation,
-                                    child: child,
-                                  ),
-                                );
-                              },
-
-                              child: isPressed
-                                  ? Row(
-                                key: const ValueKey(
-                                  'pressed',
+                              child: state.isPressed
+                                  ? const Text(
+                                'Continue...',
+                                key: ValueKey('continue'),
+                                style: TextStyle(
+                                  fontWeight:
+                                  FontWeight.bold,
+                                  fontSize: 17,
                                 ),
-                                mainAxisSize:
-                                MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    size: 22.sp,
-                                  ),
-                                  SizedBox(width: 8.w),
-                                  Text(
-                                    'Continue',
-                                    style: TextStyle(
-                                      fontSize: 17.sp,
-                                      fontWeight:
-                                      FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
                               )
-                                  : Row(
-                                key: const ValueKey(
-                                  'normal',
+                                  : const Text(
+                                'Checkout',
+                                key: ValueKey('checkout'),
+                                style: TextStyle(
+                                  fontWeight:
+                                  FontWeight.bold,
+                                  fontSize: 18,
                                 ),
-                                mainAxisSize:
-                                MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons
-                                        .shopping_cart_checkout,
-                                    size: 22.sp,
-                                  ),
-                                  SizedBox(width: 8.w),
-                                  Text(
-                                    'Checkout',
-                                    style: TextStyle(
-                                      fontSize: 18.sp,
-                                      fontWeight:
-                                      FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ),

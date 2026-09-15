@@ -24,7 +24,6 @@ class CheckoutScreen extends StatelessWidget {
           backgroundColor: Colors.amber,
           foregroundColor: Colors.black,
           elevation: 0,
-          centerTitle: false,
           titleSpacing: 16.w,
           title: Row(
             children: [
@@ -41,9 +40,7 @@ class CheckoutScreen extends StatelessWidget {
                   size: 23.sp,
                 ),
               ),
-
               SizedBox(width: 10.w),
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -66,6 +63,7 @@ class CheckoutScreen extends StatelessWidget {
             ],
           ),
         ),
+
         body: BlocConsumer<CheckoutBloc, CheckoutState>(
           listener: (context, state) {
             if (state is OrderPlaced) {
@@ -77,12 +75,14 @@ class CheckoutScreen extends StatelessWidget {
               );
             }
           },
+
           builder: (context, state) {
             return SingleChildScrollView(
               padding: EdgeInsets.all(16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+
                   Text(
                     'Delivery Address',
                     style: TextStyle(
@@ -101,11 +101,9 @@ class CheckoutScreen extends StatelessWidget {
                     },
                     decoration: InputDecoration(
                       hintText: 'Enter your address',
+                      prefixIcon: const Icon(Icons.location_on),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.location_on,
                       ),
                     ),
                   ),
@@ -122,25 +120,48 @@ class CheckoutScreen extends StatelessWidget {
 
                   SizedBox(height: 10.h),
 
-                  _paymentOption(
-                    context,
-                    'Cash on Delivery',
-                    Icons.money,
-                    state.paymentMethod,
+                  Card(
+                    child: RadioListTile<String>(
+                      value: 'Cash on Delivery',
+                      groupValue: state.paymentMethod,
+                      secondary: const Icon(Icons.money),
+                      title: const Text('Cash on Delivery'),
+                      onChanged: (value) {
+                        context.read<CheckoutBloc>().add(
+                          SelectPaymentMethod(value!),
+                        );
+                      },
+                    ),
                   ),
 
-                  _paymentOption(
-                    context,
-                    'Credit / Debit Card',
-                    Icons.credit_card,
-                    state.paymentMethod,
+                  Card(
+                    child: RadioListTile<String>(
+                      value: 'Credit / Debit Card',
+                      groupValue: state.paymentMethod,
+                      secondary: const Icon(Icons.credit_card),
+                      title: const Text('Credit / Debit Card'),
+                      onChanged: (value) {
+                        context.read<CheckoutBloc>().add(
+                          SelectPaymentMethod(value!),
+                        );
+                      },
+                    ),
                   ),
 
-                  _paymentOption(
-                    context,
-                    'EasyPaisa',
-                    Icons.account_balance_wallet,
-                    state.paymentMethod,
+                  Card(
+                    child: RadioListTile<String>(
+                      value: 'EasyPaisa',
+                      groupValue: state.paymentMethod,
+                      secondary: const Icon(
+                        Icons.account_balance_wallet,
+                      ),
+                      title: const Text('EasyPaisa'),
+                      onChanged: (value) {
+                        context.read<CheckoutBloc>().add(
+                          SelectPaymentMethod(value!),
+                        );
+                      },
+                    ),
                   ),
 
                   SizedBox(height: 25.h),
@@ -164,6 +185,7 @@ class CheckoutScreen extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
+
                         Row(
                           mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
@@ -180,9 +202,9 @@ class CheckoutScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text('Delivery'),
-                            const Text('\$2.00'),
+                          children: const [
+                            Text('Delivery'),
+                            Text('\$2.00'),
                           ],
                         ),
 
@@ -195,16 +217,16 @@ class CheckoutScreen extends StatelessWidget {
                             Text(
                               'Total',
                               style: TextStyle(
-                                fontSize: 18.sp,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Text(
                               '\$${(total + 2).toStringAsFixed(2)}',
                               style: TextStyle(
-                                fontSize: 18.sp,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.amber.shade800,
+                                color: Colors.amber,
                               ),
                             ),
                           ],
@@ -234,29 +256,6 @@ class CheckoutScreen extends StatelessWidget {
             );
           },
         ),
-      ),
-    );
-  }
-
-  Widget _paymentOption(
-      BuildContext context,
-      String title,
-      IconData icon,
-      String selectedPayment,
-      ) {
-    return Card(
-      child: RadioListTile<String>(
-        value: title,
-        groupValue: selectedPayment,
-        onChanged: (value) {
-          if (value != null) {
-            context.read<CheckoutBloc>().add(
-              SelectPaymentMethod(value),
-            );
-          }
-        },
-        title: Text(title),
-        secondary: Icon(icon),
       ),
     );
   }

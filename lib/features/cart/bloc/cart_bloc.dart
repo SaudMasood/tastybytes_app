@@ -5,24 +5,19 @@ import 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartInitial()) {
+
     on<AddCartItem>((event, emit) {
       final items = List<Map<String, Object>>.from(state.items);
-
       final newItem = Map<String, Object>.from(event.item);
 
-      final existingIndex = items.indexWhere(
+      final index = items.indexWhere(
             (item) => item['name'] == newItem['name'],
       );
 
-      if (existingIndex != -1) {
-        final quantity =
-        items[existingIndex]['quantity'] as int;
-
-        final newQuantity =
-        newItem['quantity'] as int;
-
-        items[existingIndex]['quantity'] =
-            quantity + newQuantity;
+      if (index != -1) {
+        items[index]['quantity'] =
+            (items[index]['quantity'] as int) +
+                (newItem['quantity'] as int);
       } else {
         items.add(newItem);
       }
@@ -33,9 +28,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<IncreaseCartQuantity>((event, emit) {
       final items = List<Map<String, Object>>.from(state.items);
 
-      final quantity = items[event.index]['quantity'] as int;
-
-      items[event.index]['quantity'] = quantity + 1;
+      items[event.index]['quantity'] =
+          (items[event.index]['quantity'] as int) + 1;
 
       emit(CartUpdated(items));
     });
@@ -43,7 +37,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<DecreaseCartQuantity>((event, emit) {
       final items = List<Map<String, Object>>.from(state.items);
 
-      final quantity = items[event.index]['quantity'] as int;
+      final quantity =
+      items[event.index]['quantity'] as int;
 
       if (quantity > 1) {
         items[event.index]['quantity'] = quantity - 1;
@@ -62,6 +57,24 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       } else {
         emit(CartUpdated(items));
       }
+    });
+
+    on<CheckoutPressed>((event, emit) {
+      emit(
+        CartUpdated(
+          state.items,
+          isPressed: true,
+        ),
+      );
+    });
+
+    on<CheckoutReset>((event, emit) {
+      emit(
+        CartUpdated(
+          state.items,
+          isPressed: false,
+        ),
+      );
     });
   }
 }

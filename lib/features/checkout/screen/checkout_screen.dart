@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/constants/app_colors.dart';
 import '../../order_success/screen/order_success_screen.dart';
 import '../bloc/checkout_bloc.dart';
 import '../bloc/checkout_event.dart';
@@ -19,48 +20,49 @@ class CheckoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => CheckoutBloc(),
+
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.amber,
-          foregroundColor: Colors.black,
-          elevation: 0,
-          titleSpacing: 16.w,
-          title: Row(
-            children: [
-              Container(
-                width: 42.w,
-                height: 42.h,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.shopping_cart_checkout,
-                  color: Colors.amber.shade800,
-                  size: 23.sp,
+        backgroundColor: AppColors.lightGrey,
+
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(85.h),
+
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.yellow,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30.r),
+                bottomRight: Radius.circular(30.r),
+              ),
+            ),
+
+            child: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.all(15.w),
+
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      backgroundColor: AppColors.white,
+                      child: Icon(
+                        Icons.shopping_cart_checkout,
+                        color: AppColors.black,
+                      ),
+                    ),
+
+                    SizedBox(width: 10.w),
+
+                    Text(
+                      'Checkout 🛍️',
+                      style: TextStyle(
+                        fontSize: 19.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(width: 10.w),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Almost Done',
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      color: Colors.black54,
-                    ),
-                  ),
-                  Text(
-                    'Checkout 🛍️',
-                    style: TextStyle(
-                      fontSize: 19.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
         ),
 
@@ -70,7 +72,8 @@ class CheckoutScreen extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OrderSuccessScreen(),
+                  builder: (_) =>
+                  const OrderSuccessScreen(),
                 ),
               );
             }
@@ -78,11 +81,13 @@ class CheckoutScreen extends StatelessWidget {
 
           builder: (context, state) {
             return SingleChildScrollView(
-              padding: EdgeInsets.all(16.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+              padding: EdgeInsets.all(18.w),
 
+              child: Column(
+                crossAxisAlignment:
+                CrossAxisAlignment.start,
+
+                children: [
                   Text(
                     'Delivery Address',
                     style: TextStyle(
@@ -99,11 +104,18 @@ class CheckoutScreen extends StatelessWidget {
                         ChangeAddress(value),
                       );
                     },
+
                     decoration: InputDecoration(
                       hintText: 'Enter your address',
-                      prefixIcon: const Icon(Icons.location_on),
+                      prefixIcon:
+                      const Icon(Icons.location_on),
+                      filled: true,
+                      fillColor: AppColors.white,
+
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12.r),
+                        borderRadius:
+                        BorderRadius.circular(15.r),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                   ),
@@ -120,45 +132,82 @@ class CheckoutScreen extends StatelessWidget {
 
                   SizedBox(height: 10.h),
 
-                  Card(
-                    child: RadioListTile<String>(
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius:
+                      BorderRadius.circular(15.r),
+                    ),
+
+                    child: RadioListTile(
                       value: 'Cash on Delivery',
                       groupValue: state.paymentMethod,
-                      secondary: const Icon(Icons.money),
-                      title: const Text('Cash on Delivery'),
+                      title: const Text(
+                        'Cash on Delivery',
+                      ),
+                      secondary:
+                      const Icon(Icons.money),
+
                       onChanged: (value) {
                         context.read<CheckoutBloc>().add(
-                          SelectPaymentMethod(value!),
+                          SelectPaymentMethod(
+                            value.toString(),
+                          ),
                         );
                       },
                     ),
                   ),
 
-                  Card(
-                    child: RadioListTile<String>(
+                  SizedBox(height: 8.h),
+
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius:
+                      BorderRadius.circular(15.r),
+                    ),
+
+                    child: RadioListTile(
                       value: 'Credit / Debit Card',
                       groupValue: state.paymentMethod,
-                      secondary: const Icon(Icons.credit_card),
-                      title: const Text('Credit / Debit Card'),
+                      title: const Text(
+                        'Credit / Debit Card',
+                      ),
+                      secondary:
+                      const Icon(Icons.credit_card),
+
                       onChanged: (value) {
                         context.read<CheckoutBloc>().add(
-                          SelectPaymentMethod(value!),
+                          SelectPaymentMethod(
+                            value.toString(),
+                          ),
                         );
                       },
                     ),
                   ),
 
-                  Card(
-                    child: RadioListTile<String>(
+                  SizedBox(height: 8.h),
+
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius:
+                      BorderRadius.circular(15.r),
+                    ),
+
+                    child: RadioListTile(
                       value: 'EasyPaisa',
                       groupValue: state.paymentMethod,
+                      title: const Text('EasyPaisa'),
                       secondary: const Icon(
                         Icons.account_balance_wallet,
                       ),
-                      title: const Text('EasyPaisa'),
+
                       onChanged: (value) {
                         context.read<CheckoutBloc>().add(
-                          SelectPaymentMethod(value!),
+                          SelectPaymentMethod(
+                            value.toString(),
+                          ),
                         );
                       },
                     ),
@@ -174,18 +223,20 @@ class CheckoutScreen extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 10.h),
 
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(16.w),
+
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(15.r),
+                      color: AppColors.white,
+                      borderRadius:
+                      BorderRadius.circular(15.r),
                     ),
+
                     child: Column(
                       children: [
-
                         Row(
                           mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
@@ -197,7 +248,7 @@ class CheckoutScreen extends StatelessWidget {
                           ],
                         ),
 
-                        SizedBox(height: 10.h),
+                        SizedBox(height: 12.h),
 
                         Row(
                           mainAxisAlignment:
@@ -214,19 +265,19 @@ class CheckoutScreen extends StatelessWidget {
                           mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               'Total',
                               style: TextStyle(
-                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
+                                fontSize: 18,
                               ),
                             ),
+
                             Text(
                               '\$${(total + 2).toStringAsFixed(2)}',
-                              style: TextStyle(
-                                fontSize: 18,
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.amber,
+                                fontSize: 18,
                               ),
                             ),
                           ],
@@ -235,19 +286,37 @@ class CheckoutScreen extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: 30.h),
+                  SizedBox(height: 25.h),
 
                   SizedBox(
                     width: double.infinity,
-                    height: 55.h,
+                    height: 52.h,
+
                     child: ElevatedButton(
                       onPressed: () {
                         context.read<CheckoutBloc>().add(
                           PlaceOrder(),
                         );
                       },
-                      child: const Text(
+
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                        AppColors.yellow,
+                        foregroundColor:
+                        AppColors.black,
+
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                          BorderRadius.circular(15.r),
+                        ),
+                      ),
+
+                      child: Text(
                         'Place Order',
+                        style: TextStyle(
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

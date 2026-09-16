@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/constants/app_colors.dart';
 import '../../cart/bloc/cart_bloc.dart';
 import '../../cart/bloc/cart_event.dart';
 import '../../cart/bloc/cart_state.dart';
@@ -111,19 +112,22 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
 
                 Hero(
                   tag: 'category${_getCategoryIndex()}',
-                  child: Container(
-                    width: 150.w,
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                    child: Center(
-                      child: Text(
-                        widget.category,
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Container(
+                      width: double.infinity,
+                      height: 60.h,
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(15.r),
+                      ),
+                      child: Center(
+                        child: Text(
+                          widget.category,
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -155,6 +159,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
 
                       return FadeTransition(
                         opacity: fadeAnimation,
+
                         child: Container(
                           margin: EdgeInsets.only(bottom: 15.h),
                           padding: EdgeInsets.all(15.w),
@@ -162,6 +167,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
                             color: Colors.grey.shade100,
                             borderRadius: BorderRadius.circular(15.r),
                           ),
+
                           child: Row(
                             children: [
                               Hero(
@@ -181,7 +187,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
                                 ),
                               ),
 
-                              SizedBox(width: 15.w),
+                              SizedBox(width: 50.w),
 
                               Expanded(
                                 child: Column(
@@ -208,36 +214,46 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
                                     ),
 
                                     SizedBox(height: 10.h),
+                                    SizedBox(
+                                      height: 38.h,
+                                      child: ElevatedButton.icon(
+                                        onPressed: () {
+                                          context.read<FoodDetailsBloc>().add(AddToCart());
 
-                                    ElevatedButton.icon(
-                                      onPressed: () {
-                                        context
-                                            .read<FoodDetailsBloc>()
-                                            .add(AddToCart());
+                                          context.read<CartBloc>().add(
+                                            AddCartItem({
+                                              'name': name,
+                                              'price': price,
+                                              'icon': icon,
+                                              'quantity': 1,
+                                            }),
+                                          );
 
-                                        context.read<CartBloc>().add(
-                                          AddCartItem({
-                                            'name': name,
-                                            'price': price,
-                                            'icon': icon,
-                                            'quantity': 1,
-                                          }),
-                                        );
-
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              '$name added to cart',
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: Text('$name added to cart'),
                                             ),
+                                          );
+                                        },
+                                        icon: Icon(
+                                          Icons.add,
+                                          size: 17.sp,
+                                        ),
+                                        label: Text(
+                                          'Add to Cart',
+                                          style: TextStyle(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                        );
-                                      },
-                                      icon: const Icon(
-                                        Icons.add,
-                                      ),
-                                      label: const Text(
-                                        'Add to Cart',
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                          backgroundColor: AppColors.yellow,
+                                          foregroundColor: AppColors.black,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10.r),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ],

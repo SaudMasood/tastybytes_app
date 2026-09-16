@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/constants/app_colors.dart';
 import '../bloc/profile_bloc.dart';
 import '../bloc/profile_event.dart';
 import '../bloc/profile_state.dart';
@@ -13,201 +14,161 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => ProfileBloc(),
+
       child: BlocListener<ProfileBloc, ProfileState>(
         listener: (context, state) {
           if (state is ProfileEdit) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Edit Profile'),
-              ),
+              const SnackBar(content: Text('Edit Profile')),
             );
           }
 
           if (state is ProfileLogoutSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Logged out successfully'),
-              ),
+              const SnackBar(content: Text('Logged out successfully')),
             );
           }
         },
+
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.amber,
-            foregroundColor: Colors.black,
-            elevation: 0,
-            centerTitle: false,
-            titleSpacing: 16.w,
-            title: Row(
-              children: [
-                Container(
-                  width: 42.w,
-                  height: 42.h,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.person,
-                    color: Colors.amber.shade800,
-                    size: 23.sp,
-                  ),
+          backgroundColor: AppColors.lightGrey,
+
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(70.h),
+            child: Container(
+              padding: EdgeInsets.all(12.w),
+              decoration: BoxDecoration(
+                color: AppColors.yellow,
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(25.r),
                 ),
-
-                SizedBox(width: 10.w),
-
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              child: SafeArea(
+                child: Row(
                   children: [
-                    Text(
-                      'Your Account',
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        color: Colors.black54,
+                    const CircleAvatar(
+                      backgroundColor: AppColors.white,
+                      child: Icon(
+                        Icons.person,
+                        color: AppColors.black,
                       ),
                     ),
+                    SizedBox(width: 10.w),
                     Text(
                       'My Profile 👤',
                       style: TextStyle(
-                        fontSize: 19.sp,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
-          body: SafeArea(
-            child: ListView(
-              padding: EdgeInsets.all(20.w),
-              children: [
-                SizedBox(height: 15.h),
 
-                Center(
-                  child: CircleAvatar(
-                    radius: 55.r,
-                    backgroundColor: Colors.amber,
-                    child: Icon(
-                      Icons.person,
-                      size: 65.sp,
-                      color: Colors.white,
-                    ),
+
+          body: ListView(
+            padding: EdgeInsets.all(20.w),
+            children: [
+              SizedBox(height: 10.h),
+
+              const CircleAvatar(
+                radius: 40,
+                backgroundColor: AppColors.yellow,
+                child: Icon(
+                  Icons.person,
+                  size: 60,
+                  color: AppColors.white,
+                ),
+              ),
+
+              SizedBox(height: 15.h),
+
+              Center(
+                child: Text(
+                  'Saud Masood',
+                  style: TextStyle(
+                    fontSize: 23.sp,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+              ),
 
-                SizedBox(height: 15.h),
-
-                Center(
-                  child: Text(
-                    'Saud Masood',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+              Center(
+                child: Text(
+                  'saud@example.com',
+                  style: TextStyle(
+                    color: AppColors.grey,
                   ),
                 ),
+              ),
 
-                SizedBox(height: 5.h),
+              SizedBox(height: 25.h),
 
-                Center(
-                  child: Text(
-                    'saud@example.com',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      color: Colors.grey,
-                    ),
-                  ),
+              ListTile(
+                tileColor: AppColors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.r),
                 ),
+                leading: const Icon(Icons.person),
+                title: const Text('Edit Profile'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  context.read<ProfileBloc>().add(
+                    EditProfileEvent(),
+                  );
+                },
+              ),
 
-                SizedBox(height: 30.h),
+              SizedBox(height: 10.h),
 
-                _profileItem(
-                  context,
-                  icon: Icons.person,
-                  title: 'Edit Profile',
-                  onTap: () {
-                    context.read<ProfileBloc>().add(
-                      EditProfileEvent(),
-                    );
-                  },
+              ListTile(
+                tileColor: AppColors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.r),
                 ),
+                leading: const Icon(Icons.history),
+                title: const Text('Order History'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {},
+              ),
 
-                _profileItem(
-                  context,
-                  icon: Icons.history,
-                  title: 'Order History',
-                  onTap: () {},
-                ),
+              SizedBox(height: 10.h),
 
-                _profileItem(
-                  context,
-                  icon: Icons.location_on,
-                  title: 'My Address',
-                  onTap: () {},
+              ListTile(
+                tileColor: AppColors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.r),
                 ),
+                leading: const Icon(Icons.location_on),
+                title: const Text('My Address'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {},
+              ),
 
-                _profileItem(
-                  context,
-                  icon: Icons.logout,
-                  title: 'Logout',
-                  onTap: () {
-                    context.read<ProfileBloc>().add(
-                      LogoutEvent(),
-                    );
-                  },
+              SizedBox(height: 10.h),
+
+              ListTile(
+                tileColor: AppColors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.r),
                 ),
-              ],
-            ),
+                leading: Icon(
+                  Icons.logout,
+                  color: AppColors.error,
+                ),
+                title: const Text('Logout'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  context.read<ProfileBloc>().add(
+                    LogoutEvent(),
+                  );
+                },
+              ),
+            ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _profileItem(
-      BuildContext context, {
-        required IconData icon,
-        required String title,
-        required VoidCallback onTap,
-      }) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 10.h),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(15.r),
-      ),
-      child: ListTile(
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: 16.w,
-          vertical: 5.h,
-        ),
-        leading: Container(
-          width: 42.w,
-          height: 42.h,
-          decoration: BoxDecoration(
-            color: Colors.amber.shade100,
-            borderRadius: BorderRadius.circular(10.r),
-          ),
-          child: Icon(
-            icon,
-            size: 22.sp,
-          ),
-        ),
-        title: Text(
-          title,
-          style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        trailing: Icon(
-          Icons.arrow_forward_ios,
-          size: 16.sp,
-        ),
-        onTap: onTap,
       ),
     );
   }

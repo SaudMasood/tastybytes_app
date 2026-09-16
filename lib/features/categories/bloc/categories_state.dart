@@ -1,13 +1,15 @@
 abstract class CategoriesState {}
 
-class CategoriesInitial extends CategoriesState {
+class CategoriesInitial extends CategoriesState {}
+
+class CategoriesLoading extends CategoriesState {}
+
+class CategoriesLoaded extends CategoriesState {
+  final List<Map<String, Object>> categories;
   final int selectedIndex;
 
-  CategoriesInitial({this.selectedIndex = 0});
-}
-
-class CategorySelected extends CategoriesState {
-  final int selectedIndex;
-
-  CategorySelected(this.selectedIndex);
+  CategoriesLoaded({
+    required this.categories,
+    this.selectedIndex = 0,
+  });
 }

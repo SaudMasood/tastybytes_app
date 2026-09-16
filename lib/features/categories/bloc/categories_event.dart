@@ -1,9 +1,9 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 abstract class CategoriesEvent {}
 
-class SelectCategoryEvent extends CategoriesEvent {
+class LoadCategories extends CategoriesEvent {}
+
+class SelectCategory extends CategoriesEvent {
   final int index;
 
-  SelectCategoryEvent(this.index);
+  SelectCategory(this.index);
 }

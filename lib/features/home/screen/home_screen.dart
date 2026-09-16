@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/constants/app_colors.dart';
 import '../../categories/screen/categories_screen.dart';
 import '../bloc/home_bloc.dart';
 import '../bloc/home_event.dart';
@@ -10,7 +11,7 @@ import '../bloc/home_state.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  static const categories = [
+  final categories = const [
     'All',
     'Pizza',
     'Burger',
@@ -18,7 +19,7 @@ class HomeScreen extends StatelessWidget {
     'Drinks',
   ];
 
-  static const icons = [
+  final icons = const [
     Icons.apps,
     Icons.local_pizza,
     Icons.lunch_dining,
@@ -26,15 +27,10 @@ class HomeScreen extends StatelessWidget {
     Icons.local_drink,
   ];
 
-  static const foods = [
+  final foods = const [
     {
       'name': 'Cheese Burger',
       'price': '\$12.99',
-      'image': 'assets/food/burger.png',
-    },
-    {
-      'name': 'Chicken Burger',
-      'price': '\$11.99',
       'image': 'assets/food/burger.png',
     },
     {
@@ -43,19 +39,9 @@ class HomeScreen extends StatelessWidget {
       'image': 'assets/food/pizza.png',
     },
     {
-      'name': 'Cheese Pizza',
-      'price': '\$13.99',
-      'image': 'assets/food/pizza.png',
-    },
-    {
       'name': 'Creamy Pasta',
       'price': '\$10.99',
       'image': 'assets/food/pasta.png',
-    },
-    {
-      'name': 'Fresh Juice',
-      'price': '\$5.99',
-      'image': 'assets/food/drink.png',
     },
   ];
 
@@ -65,92 +51,104 @@ class HomeScreen extends StatelessWidget {
       create: (_) => HomeBloc(),
 
       child: Scaffold(
-        backgroundColor: Colors.grey.shade50,
+        backgroundColor: AppColors.lightGrey,
 
-        appBar: AppBar(
-          backgroundColor: Colors.amber,
-          foregroundColor: Colors.black,
-          elevation: 0,
-          titleSpacing: 16.w,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(90.h),
 
-          title: Row(
-            children: [
-              Container(
-                width: 44.w,
-                height: 44.h,
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.yellow,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(35.r),
+                bottomRight: Radius.circular(35.r),
+              ),
+            ),
 
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
+            child: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.w,
                 ),
 
-                child: Icon(
-                  Icons.restaurant,
-                  color: Colors.amber.shade800,
-                  size: 25.sp,
-                ),
-              ),
-
-              SizedBox(width: 10.w),
-
-              Column(
-                crossAxisAlignment:
-                CrossAxisAlignment.start,
-
-                children: [
-                  Text(
-                    'Welcome Back 👋',
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      color: Colors.black54,
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 21.r,
+                      backgroundColor: AppColors.white,
+                      child: Icon(
+                        Icons.restaurant,
+                        color: AppColors.black,
+                        size: 23.sp,
+                      ),
                     ),
-                  ),
 
-                  Text(
-                    'TastyBytes 😋',
-                    style: TextStyle(
-                      fontSize: 19.sp,
-                      fontWeight: FontWeight.bold,
+                    SizedBox(width: 10.w),
+
+                    Column(
+                      mainAxisAlignment:
+                      MainAxisAlignment.center,
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Welcome Back 👋',
+                          style: TextStyle(
+                            fontSize: 11.sp,
+                            color: AppColors.darkGrey,
+                          ),
+                        ),
+
+                        Text(
+                          'TastyBytes 😋',
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.black,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
 
-          actions: [
-            Container(
-              margin: EdgeInsets.only(right: 12.w),
+                    const Spacer(),
 
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(14.r),
-              ),
+                    Container(
+                      width: 42.w,
+                      height: 42.h,
 
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.notifications_none,
-                  size: 25.sp,
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        shape: BoxShape.circle,
+                      ),
+
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.notifications_none,
+                          color: AppColors.black,
+                          size: 23.sp,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
-
         body: SingleChildScrollView(
           padding: EdgeInsets.all(16.w),
 
           child: Column(
-            crossAxisAlignment:
-            CrossAxisAlignment.start,
-
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               Text(
                 'What are you craving?',
                 style: TextStyle(
                   fontSize: 25.sp,
                   fontWeight: FontWeight.bold,
+                  color: AppColors.black,
                 ),
               ),
 
@@ -160,52 +158,34 @@ class HomeScreen extends StatelessWidget {
                 'Find something delicious for you',
                 style: TextStyle(
                   fontSize: 14.sp,
-                  color: Colors.grey,
+                  color: AppColors.grey,
                 ),
               ),
 
               SizedBox(height: 15.h),
 
-              Container(
-                height: 55.h,
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search your favorite food...',
+                  prefixIcon: const Icon(Icons.search),
 
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius:
-                  BorderRadius.circular(18.r),
-
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 8,
-                      offset: const Offset(0, 3),
-                      color: Colors.grey.shade300,
+                  suffixIcon: Container(
+                    margin: EdgeInsets.all(7.w),
+                    decoration: BoxDecoration(
+                      color: AppColors.yellow,
+                      borderRadius:
+                      BorderRadius.circular(10.r),
                     ),
-                  ],
-                ),
+                    child: const Icon(Icons.tune),
+                  ),
 
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText:
-                    'Search your favorite food...',
+                  filled: true,
+                  fillColor: AppColors.white,
 
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.amber.shade800,
-                    ),
-
-                    suffixIcon: Container(
-                      margin: EdgeInsets.all(7.w),
-
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius:
-                        BorderRadius.circular(12.r),
-                      ),
-
-                      child: const Icon(Icons.tune),
-                    ),
-
-                    border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius:
+                    BorderRadius.circular(16.r),
+                    borderSide: BorderSide.none,
                   ),
                 ),
               ),
@@ -214,12 +194,12 @@ class HomeScreen extends StatelessWidget {
 
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(20.w),
+                padding: EdgeInsets.all(18.w),
 
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: AppColors.black,
                   borderRadius:
-                  BorderRadius.circular(22.r),
+                  BorderRadius.circular(20.r),
                 ),
 
                 child: Row(
@@ -228,35 +208,32 @@ class HomeScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment:
                         CrossAxisAlignment.start,
-
                         children: [
                           Text(
                             'SPECIAL OFFER',
                             style: TextStyle(
-                              color: Colors.amber,
+                              color: AppColors.yellow,
                               fontSize: 11.sp,
-                              fontWeight:
-                              FontWeight.bold,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
 
-                          SizedBox(height: 10.h),
+                          SizedBox(height: 7.h),
 
                           Text(
                             '20% OFF',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.white,
                               fontSize: 27.sp,
-                              fontWeight:
-                              FontWeight.bold,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
 
                           Text(
                             'On your first order',
                             style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 13.sp,
+                              color: AppColors.white.withOpacity(.7),
+                              fontSize: 12.sp,
                             ),
                           ),
                         ],
@@ -265,8 +242,8 @@ class HomeScreen extends StatelessWidget {
 
                     Icon(
                       Icons.fastfood,
-                      color: Colors.amber,
-                      size: 60.sp,
+                      color: AppColors.yellow,
+                      size: 55.sp,
                     ),
                   ],
                 ),
@@ -277,7 +254,6 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment:
                 MainAxisAlignment.spaceBetween,
-
                 children: [
                   Text(
                     'Categories',
@@ -289,7 +265,6 @@ class HomeScreen extends StatelessWidget {
 
                   Hero(
                     tag: 'categories',
-
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -300,15 +275,11 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
                       },
-
                       child: Text(
                         'See All',
                         style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight:
-                          FontWeight.bold,
-                          color:
-                          Colors.amber.shade800,
+                          color: AppColors.yellow,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -319,72 +290,51 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 12.h),
 
               SizedBox(
-                height: 85.h,
+                height: 80.h,
 
                 child: BlocBuilder<HomeBloc, HomeState>(
                   builder: (context, state) {
                     int selected = 0;
 
                     if (state is HomeCategoryChanged) {
-                      selected =
-                          state.selectedCategory;
+                      selected = state.selectedCategory;
                     }
 
                     return ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: categories.length,
 
-                      itemBuilder:
-                          (context, index) {
-                        final isSelected =
-                            selected == index;
-
+                      itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            context
-                                .read<HomeBloc>()
-                                .add(
-                              SelectCategoryEvent(
-                                index,
-                              ),
+                            context.read<HomeBloc>().add(
+                              SelectCategoryEvent(index),
                             );
                           },
 
-                          child: AnimatedContainer(
-                            duration: const Duration(
-                              milliseconds: 250,
-                            ),
-
-                            width: 72.w,
-
+                          child: Container(
+                            width: 70.w,
                             margin: EdgeInsets.only(
                               right: 10.w,
                             ),
 
                             decoration: BoxDecoration(
-                              color: isSelected
-                                  ? Colors.amber
-                                  : Colors.white,
-
+                              color: selected == index
+                                  ? AppColors.yellow
+                                  : AppColors.white,
                               borderRadius:
-                              BorderRadius.circular(
-                                18.r,
-                              ),
+                              BorderRadius.circular(16.r),
                             ),
 
                             child: Column(
                               mainAxisAlignment:
-                              MainAxisAlignment
-                                  .center,
-
+                              MainAxisAlignment.center,
                               children: [
                                 Icon(
                                   icons[index],
-                                  size: 25.sp,
-
-                                  color: isSelected
-                                      ? Colors.black
-                                      : Colors.grey,
+                                  color: selected == index
+                                      ? AppColors.black
+                                      : AppColors.grey,
                                 ),
 
                                 SizedBox(height: 5.h),
@@ -392,9 +342,8 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   categories[index],
                                   style: TextStyle(
-                                    fontSize: 11.sp,
-                                    fontWeight:
-                                    FontWeight.bold,
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
@@ -412,7 +361,6 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment:
                 MainAxisAlignment.spaceBetween,
-
                 children: [
                   Text(
                     'Popular Food',
@@ -425,8 +373,8 @@ class HomeScreen extends StatelessWidget {
                   Text(
                     'View All',
                     style: TextStyle(
+                      color: AppColors.yellow,
                       fontWeight: FontWeight.bold,
-                      color: Colors.amber.shade800,
                     ),
                   ),
                 ],
@@ -435,7 +383,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 12.h),
 
               SizedBox(
-                height: 220.h,
+                height: 215.h,
 
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -446,40 +394,24 @@ class HomeScreen extends StatelessWidget {
 
                     return Container(
                       width: 170.w,
-
-                      margin: EdgeInsets.only(
-                        right: 14.w,
-                      ),
-
+                      margin: EdgeInsets.only(right: 12.w),
                       padding: EdgeInsets.all(10.w),
 
                       decoration: BoxDecoration(
-                        color: Colors.white,
-
+                        color: AppColors.white,
                         borderRadius:
-                        BorderRadius.circular(20.r),
-
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 8,
-                            color:
-                            Colors.grey.shade300,
-                          ),
-                        ],
+                        BorderRadius.circular(18.r),
                       ),
 
                       child: Column(
                         crossAxisAlignment:
                         CrossAxisAlignment.start,
-
                         children: [
+
                           Expanded(
                             child: ClipRRect(
                               borderRadius:
-                              BorderRadius.circular(
-                                15.r,
-                              ),
-
+                              BorderRadius.circular(14.r),
                               child: Image.asset(
                                 food['image']!,
                                 width: double.infinity,
@@ -488,18 +420,14 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
 
-                          SizedBox(height: 8.h),
+                          SizedBox(height: 7.h),
 
                           Text(
                             food['name']!,
-                            maxLines: 1,
-                            overflow:
-                            TextOverflow.ellipsis,
-
                             style: TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight:
-                              FontWeight.bold,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.black,
                             ),
                           ),
 
@@ -507,36 +435,25 @@ class HomeScreen extends StatelessWidget {
 
                           Row(
                             mainAxisAlignment:
-                            MainAxisAlignment
-                                .spaceBetween,
-
+                            MainAxisAlignment.spaceBetween,
                             children: [
+
                               Text(
                                 food['price']!,
                                 style: TextStyle(
-                                  fontWeight:
-                                  FontWeight.bold,
-                                  color: Colors
-                                      .amber.shade800,
+                                  color: AppColors.yellow,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
 
                               Container(
-                                padding:
-                                EdgeInsets.all(6.w),
-
+                                padding: EdgeInsets.all(5.w),
                                 decoration: BoxDecoration(
-                                  color: Colors.amber,
+                                  color: AppColors.yellow,
                                   borderRadius:
-                                  BorderRadius
-                                      .circular(
-                                    10.r,
-                                  ),
+                                  BorderRadius.circular(9.r),
                                 ),
-
-                                child: const Icon(
-                                  Icons.add,
-                                ),
+                                child: const Icon(Icons.add),
                               ),
                             ],
                           ),

@@ -29,6 +29,8 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
   late AnimationController animationController;
   late Animation<double> fadeAnimation;
 
+  String? addedFood;
+
   @override
   void initState() {
     super.initState();
@@ -59,83 +61,119 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
       child: Builder(
         builder: (context) {
           return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.amber,
-              foregroundColor: Colors.black,
-              elevation: 0,
-              centerTitle: false,
-              titleSpacing: 16.w,
-              title: Row(
-                children: [
-                  Container(
-                    width: 42.w,
-                    height: 42.h,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.restaurant_menu,
-                      color: Colors.amber.shade800,
-                      size: 23.sp,
-                    ),
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(85.h),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.yellow,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30.r),
+                    bottomRight: Radius.circular(30.r),
                   ),
-
-                  SizedBox(width: 10.w),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+                child: SafeArea(
+                  child: Row(
                     children: [
-                      Text(
-                        'Delicious Choices',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          color: Colors.black54,
+                      SizedBox(width: 8.w),
+
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios_new,
+                          color: AppColors.black,
+                          size: 22.sp,
                         ),
                       ),
-                      Text(
-                        '${widget.category} Foods 🍕',
-                        style: TextStyle(
-                          fontSize: 19.sp,
-                          fontWeight: FontWeight.bold,
+
+                      SizedBox(width: 4.w),
+
+                      CircleAvatar(
+                        radius: 22.r,
+                        backgroundColor: AppColors.white,
+                        child: Icon(
+                          Icons.restaurant_menu,
+                          color: AppColors.black,
+                          size: 22.sp,
                         ),
+                      ),
+
+                      SizedBox(width: 12.w),
+
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Delicious Choices',
+                            style: TextStyle(
+                              fontSize: 11.sp,
+                              color: AppColors.darkGrey,
+                            ),
+                          ),
+
+                          SizedBox(height: 2.h),
+
+                          Text(
+                            '${widget.category} Foods 🍕',
+                            style: TextStyle(
+                              fontSize: 19.sp,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.black,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
             ),
-
             body: Column(
               children: [
                 SizedBox(height: 20.h),
-
-                Hero(
-                  tag: 'category${_getCategoryIndex()}',
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Container(
-                      width: double.infinity,
-                      height: 60.h,
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(15.r),
-                      ),
-                      child: Center(
-                        child: Text(
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                  ),
+                  child: Container(
+                    width: double.infinity,
+                    height: 70.h,
+                    decoration: BoxDecoration(
+                      color: AppColors.yellow,
+                      borderRadius: BorderRadius.circular(15.r),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Hero(
+                          tag: 'Details_${widget.category}',
+                          child: Icon(
+                            widget.category == 'Pizza'
+                                ? Icons.local_pizza
+                                : widget.category == 'Burger'
+                                ? Icons.lunch_dining
+                                : widget.category == 'Chicken'
+                                ? Icons.restaurant
+                                : Icons.local_drink,
+                            size: 40.sp,
+                            color: AppColors.black,
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                        Text(
                           widget.category,
                           style: TextStyle(
-                            fontSize: 20.sp,
+                            fontSize: 22.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),
-
                 SizedBox(height: 20.h),
-
                 Text(
                   '${widget.category} Foods',
                   style: TextStyle(
@@ -143,9 +181,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
                 SizedBox(height: 10.h),
-
                 Expanded(
                   child: ListView.builder(
                     padding: EdgeInsets.all(16.w),
@@ -156,39 +192,35 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
                       final name = food['name'] as String;
                       final price = food['price'] as String;
                       final icon = food['icon'] as IconData;
+                      final isAdded = addedFood == name;
 
                       return FadeTransition(
                         opacity: fadeAnimation,
-
                         child: Container(
-                          margin: EdgeInsets.only(bottom: 15.h),
+                          margin: EdgeInsets.only(
+                            bottom: 15.h,
+                          ),
                           padding: EdgeInsets.all(15.w),
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade100,
+                            color: AppColors.lightGrey,
                             borderRadius: BorderRadius.circular(15.r),
                           ),
-
                           child: Row(
                             children: [
-                              Hero(
-                                tag: name,
-                                child: Container(
-                                  width: 80.w,
-                                  height: 80.h,
-                                  decoration: BoxDecoration(
-                                    color: Colors.amber,
-                                    borderRadius:
-                                    BorderRadius.circular(12.r),
-                                  ),
-                                  child: Icon(
-                                    icon,
-                                    size: 45.sp,
-                                  ),
+                              Container(
+                                width: 80.w,
+                                height: 80.h,
+                                decoration: BoxDecoration(
+                                  color: AppColors.yellow,
+                                  borderRadius: BorderRadius.circular(12.r),
+                                ),
+                                child: Icon(
+                                  icon,
+                                  size: 45.sp,
+                                  color: AppColors.black,
                                 ),
                               ),
-
-                              SizedBox(width: 50.w),
-
+                              SizedBox(width: 20.w),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment:
@@ -201,24 +233,40 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-
                                     SizedBox(height: 5.h),
-
                                     Text(
                                       price,
                                       style: TextStyle(
                                         fontSize: 16.sp,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.amber.shade800,
+                                        color: AppColors.darkGrey,
                                       ),
                                     ),
-
                                     SizedBox(height: 10.h),
-                                    SizedBox(
+                                    AnimatedContainer(
+                                      duration: const Duration(
+                                        milliseconds: 400,
+                                      ),
+                                      curve: Curves.easeOutBack,
+                                      width: isAdded ? 120.w : 110.w,
                                       height: 38.h,
+                                      decoration: BoxDecoration(
+                                        color: isAdded
+                                            ? AppColors.success
+                                            : AppColors.yellow,
+                                        borderRadius: BorderRadius.circular(
+                                          isAdded ? 20.r : 10.r,
+                                        ),
+                                      ),
                                       child: ElevatedButton.icon(
                                         onPressed: () {
-                                          context.read<FoodDetailsBloc>().add(AddToCart());
+                                          setState(() {
+                                            addedFood = name;
+                                          });
+
+                                          context
+                                              .read<FoodDetailsBloc>()
+                                              .add(AddToCart());
 
                                           context.read<CartBloc>().add(
                                             AddCartItem({
@@ -229,30 +277,38 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
                                             }),
                                           );
 
-                                          ScaffoldMessenger.of(context).showSnackBar(
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
                                             SnackBar(
-                                              content: Text('$name added to cart'),
+                                              content: Text(
+                                                '$name added to cart',
+                                              ),
+                                              duration:
+                                              const Duration(seconds: 1),
                                             ),
                                           );
                                         },
                                         icon: Icon(
-                                          Icons.add,
+                                          isAdded
+                                              ? Icons.check
+                                              : Icons.add,
                                           size: 17.sp,
                                         ),
                                         label: Text(
-                                          'Add to Cart',
+                                          isAdded
+                                              ? 'Added'
+                                              : 'Add to Cart',
                                           style: TextStyle(
-                                            fontSize: 12.sp,
+                                            fontSize: 11.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
-                                          padding: EdgeInsets.symmetric(horizontal: 12.w),
-                                          backgroundColor: AppColors.yellow,
+                                          backgroundColor: Colors.transparent,
                                           foregroundColor: AppColors.black,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10.r),
-                                          ),
+                                          elevation: 0,
+                                          shadowColor: Colors.transparent,
+                                          padding: EdgeInsets.zero,
                                         ),
                                       ),
                                     ),
@@ -267,39 +323,38 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen>
                   ),
                 ),
               ],
-            ),
+            ),floatingActionButton: BlocBuilder<CartBloc, CartState>(
+            builder: (context, state) {
+              return FloatingActionButton(
+                heroTag: 'cart',
 
-            floatingActionButton:
-            BlocBuilder<CartBloc, CartState>(
-              builder: (context, state) {
-                return FloatingActionButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CartScreen(),
-                      ),
-                    );
-                  },
-                  child: Badge(
-                    label: Text('${state.items.length}'),
-                    child: const Icon(
-                      Icons.shopping_cart,
+                backgroundColor: AppColors.yellow,
+                foregroundColor: AppColors.black,
+
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CartScreen(),
                     ),
+                  );
+                },
+
+                child: Badge(
+                  label: Text(
+                    '${state.items.length}',
                   ),
-                );
+                  child: const Icon(
+                    Icons.shopping_cart,
+                  ),
+                ),
+              );
+
               },
             ),
           );
         },
       ),
     );
-  }
-
-  int _getCategoryIndex() {
-    if (widget.category == 'Pizza') return 0;
-    if (widget.category == 'Burger') return 1;
-    if (widget.category == 'Chicken') return 2;
-    return 3;
   }
 }

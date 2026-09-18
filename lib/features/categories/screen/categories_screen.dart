@@ -73,12 +73,15 @@ class CategoriesScreen extends StatelessWidget {
 
                       SizedBox(height: 2.h),
 
-                      Text(
-                        'Categories 🍕',
-                        style: TextStyle(
-                          fontSize: 19.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.black,
+                      Hero(
+                    tag: "Category",
+                        child: Text(
+                          'Categories 🍕',
+                          style: TextStyle(
+                            fontSize: 19.sp,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.black,
+                          ),
                         ),
                       ),
                     ],
@@ -139,62 +142,65 @@ class CategoriesScreen extends StatelessWidget {
                           state.categories[index];
 
                           return GestureDetector(
-                            onTap: () {
-                              final name =
-                              category['name'] as String;
+                          onTap: () {
+                            final name =
+                            category['name'] as String;
 
-                              context
-                                  .read<CategoriesBloc>()
-                                  .add(SelectCategory(index));
+                            context
+                                .read<CategoriesBloc>()
+                                .add(SelectCategory(index));
 
-                              final categoryFoods = context
-                                  .read<CategoriesBloc>()
-                                  .foods
-                                  .where(
-                                    (food) =>
-                                food['category'] == name,
-                              )
-                                  .toList();
+                            final categoryFoods = context
+                                .read<CategoriesBloc>()
+                                .foods
+                                .where(
+                                  (food) =>
+                              food['category'] == name,
+                            )
+                                .toList();
 
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) =>
-                                      FoodDetailsScreen(
-                                        category: name,
-                                        foods: categoryFoods,
-                                      ),
-                                ),
-                              );
-                            },
-
-                            child: Container(
-                              width: double.infinity,
-                              margin: EdgeInsets.only(
-                                bottom: 12.h,
-                              ),
-                              padding: EdgeInsets.all(14.w),
-
-                              decoration: BoxDecoration(
-                                color: state.selectedIndex == index
-                                    ? AppColors.yellow
-                                    : AppColors.white,
-
-                                borderRadius:
-                                BorderRadius.circular(16.r),
-                              ),
-
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 55.w,
-                                    height: 55.h,
-
-                                    decoration: BoxDecoration(
-                                      color: AppColors.yellow,
-                                      borderRadius:
-                                      BorderRadius.circular(13.r),
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    FoodDetailsScreen(
+                                      category: name,
+                                      foods: categoryFoods,
                                     ),
+                              ),
+                            );
+                          },
+
+                          child: Container(
+                            width: double.infinity,
+                            margin: EdgeInsets.only(
+                              bottom: 12.h,
+                            ),
+                            padding: EdgeInsets.all(14.w),
+
+                            decoration: BoxDecoration(
+                              color: state.selectedIndex == index
+                                  ? AppColors.yellow
+                                  : AppColors.white,
+
+                              borderRadius:
+                              BorderRadius.circular(16.r),
+                            ),
+
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 55.w,
+                                  height: 55.h,
+
+                                  decoration: BoxDecoration(
+                                    color: AppColors.yellow,
+                                    borderRadius:
+                                    BorderRadius.circular(13.r),
+                                  ),
+
+                                  child: Hero(
+                                    tag: 'Details_${category['name']}',
 
                                     child: Icon(
                                       category['icon'] as IconData,
@@ -202,46 +208,47 @@ class CategoriesScreen extends StatelessWidget {
                                       size: 28.sp,
                                     ),
                                   ),
+                                ),
 
-                                  SizedBox(width: 15.w),
+                                SizedBox(width: 15.w),
 
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          category['name'] as String,
-                                          style: TextStyle(
-                                            fontSize: 17.sp,
-                                            fontWeight:
-                                            FontWeight.bold,
-                                            color: AppColors.black,
-                                          ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        category['name'] as String,
+                                        style: TextStyle(
+                                          fontSize: 17.sp,
+                                          fontWeight:
+                                          FontWeight.bold,
+                                          color: AppColors.black,
                                         ),
+                                      ),
 
-                                        SizedBox(height: 4.h),
+                                      SizedBox(height: 4.h),
 
-                                        Text(
-                                          'View delicious food',
-                                          style: TextStyle(
-                                            fontSize: 12.sp,
-                                            color: AppColors.grey,
-                                          ),
+                                      Text(
+                                        'View delicious food',
+                                        style: TextStyle(
+                                          fontSize: 12.sp,
+                                          color: AppColors.grey,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
+                                ),
 
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: 16.sp,
-                                    color: AppColors.grey,
-                                  ),
-                                ],
-                              ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 16.sp,
+                                  color: AppColors.grey,
+                                ),
+                              ],
                             ),
-                          );
+                          ),
+                                                      );
                         },
                       ),
                     ),

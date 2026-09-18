@@ -98,8 +98,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 SizedBox(height: 45.h),
 
                 Container(
-                  width: 200.w,
-                  height: 200.h,
+                  width: 100.w,
+                  height: 100.h,
                   padding: EdgeInsets.all(8.w),
                   decoration: BoxDecoration(
                     color: Colors.amber,
@@ -158,7 +158,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Lottie.asset(
                     'assets/animation/Bike.json',
                     width: 350.w,
-                    height: 550.h,
+                    height: 1000.h,
                     repeat: true,
                   ),
                 ),

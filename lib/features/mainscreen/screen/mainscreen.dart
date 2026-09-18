@@ -31,59 +31,99 @@ class _MainScreenState extends State<MainScreen> {
         index: selectedIndex,
         children: screens,
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-        destinations: [
-          NavigationDestination(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 25.sp,
+      bottomNavigationBar: Padding(
+        padding:  EdgeInsets.all(10.r),
+        child: NavigationBar(
+          selectedIndex: selectedIndex,
+          onDestinationSelected: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+          destinations: [
+
+            NavigationDestination(
+              icon: AnimatedScale(
+                scale: 1.0,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.home_outlined,
+                  size: 25.sp,
+                ),
+              ),
+              selectedIcon: AnimatedScale(
+                scale: 1.8,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.home,
+                  size: 25.sp,
+                ),
+              ),
+              label: 'Home',
             ),
-            selectedIcon: Icon(
-              Icons.home,
-              size: 25.sp,
+
+
+            NavigationDestination(
+              icon: AnimatedScale(
+                scale: 1.0,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.history_outlined,
+                  size: 25.sp,
+                ),
+              ),
+              selectedIcon: AnimatedScale(
+                scale: 1.6,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.history,
+                  size: 25.sp,
+                ),
+              ),
+              label: 'Orders',
             ),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.history_outlined,
-              size: 25.sp,
+
+            NavigationDestination(
+              icon: AnimatedScale(
+                scale: 1.0,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.shopping_cart_outlined,
+                  size: 25.sp,
+                ),
+              ),
+              selectedIcon: AnimatedScale(
+                scale: 1.6,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.shopping_cart,
+                  size: 25.sp,
+                ),
+              ),
+              label: 'Cart',
             ),
-            selectedIcon: Icon(
-              Icons.history,
-              size: 25.sp,
+
+            NavigationDestination(
+              icon: AnimatedScale(
+                scale: 1.0,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.person_outline,
+                  size: 25.sp,
+                ),
+              ),
+              selectedIcon: AnimatedScale(
+                scale: 1.6,
+                duration: const Duration(milliseconds: 300),
+                child: Icon(
+                  Icons.person,
+                  size: 25.sp,
+                ),
+              ),
+              label: 'Profile',
             ),
-            label: 'Orders',
-          ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.shopping_cart_outlined,
-              size: 25.sp,
-            ),
-            selectedIcon: Icon(
-              Icons.shopping_cart,
-              size: 25.sp,
-            ),
-            label: 'Cart',
-          ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.person_outline,
-              size: 25.sp,
-            ),
-            selectedIcon: Icon(
-              Icons.person,
-              size: 25.sp,
-            ),
-            label: 'Profile',
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

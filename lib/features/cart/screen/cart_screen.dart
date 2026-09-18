@@ -60,12 +60,16 @@ class CartScreen extends StatelessWidget {
 
                     SizedBox(height: 2.h),
 
-                    Text(
-                      'My Cart 🛒',
-                      style: TextStyle(
-                        fontSize: 19.sp,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.black,
+                    Hero(
+                      tag: "cart",
+
+                      child: Text(
+                        'My Cart 🛒',
+                        style: TextStyle(
+                          fontSize: 19.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.black,
+                        ),
                       ),
                     ),
                   ],

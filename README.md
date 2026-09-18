@@ -1,156 +1,412 @@
-# 🍔 TastyBytes — Restaurant Food Ordering App
+# 🍔 TastyBytes — Flutter Restaurant & Food Ordering App
 
 <p align="center">
-  <img src="assets/logo/logo.png" width="160" alt="TastyBytes Logo"/>
+  <img src="assets/logo/logo.png" width="170" alt="TastyBytes Logo"/>
 </p>
 
 <h1 align="center">🍔 TastyBytes</h1>
 
 <p align="center">
-  <strong>Modern • Responsive • Animated • BLoC-Powered Restaurant App</strong>
+  <strong>A Modern • Responsive • Animated Restaurant Food Ordering Application</strong>
 </p>
 
 <p align="center">
-  A complete restaurant food-ordering mobile application built with
-  <strong>Flutter & Dart</strong> as part of my
-  <strong>Week 7 Flutter Development Internship Project at Owasoft Technologies.</strong>
+  Built with ❤️ using <strong>Flutter & Dart</strong>
 </p>
 
 <p align="center">
-
-<img src="https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white"/>
-<img src="https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white"/>
-<img src="https://img.shields.io/badge/BLoC-State%20Management-7B1FA2?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Sqflite-Local%20Storage-F57C00?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Responsive-ScreenUtil-4CAF50?style=for-the-badge"/>
-
+  <img src="https://img.shields.io/badge/Flutter-Framework-02569B?style=for-the-badge&logo=flutter&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Dart-Language-0175C2?style=for-the-badge&logo=dart&logoColor=white"/>
+  <img src="https://img.shields.io/badge/BLoC-State%20Management-7B1FA2?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/ScreenUtil-Responsive%20UI-4CAF50?style=for-the-badge"/>
 </p>
 
 <p align="center">
-
-<img src="https://img.shields.io/badge/Owasoft%20Technologies-Internship-FFC107?style=flat-square"/>
-<img src="https://img.shields.io/badge/Week-07-111111?style=flat-square"/>
-<img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-4CAF50?style=flat-square"/>
-<img src="https://img.shields.io/badge/Status-Development-orange?style=flat-square"/>
-
+  <img src="https://img.shields.io/badge/Owasoft%20Technologies-Flutter%20Internship-FFC107?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Internship-Week%207-111111?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS-4CAF50?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Status-Development-orange?style=flat-square"/>
 </p>
 
 ---
 
-# 🍔 About TastyBytes
+# 📖 Project Overview
 
-**TastyBytes** is a modern restaurant and food-ordering application developed using **Flutter and Dart**.
+**TastyBytes** is a Flutter-based restaurant and food-ordering application created as part of my **Week 7 Flutter Development Internship at Owasoft Technologies**.
 
-The project was created during **Week 7 of my Flutter Development Internship at Owasoft Technologies**.
+The project focuses on building a complete food-ordering experience while applying practical Flutter development concepts such as:
 
-The application focuses on creating a smooth and engaging food-ordering experience while applying practical Flutter concepts such as:
-
+- 🐦 Flutter & Dart
+- 🧠 BLoC state management
+- 🏗️ Feature-based architecture
 - 🎨 Modern UI/UX
-- 🧠 BLoC State Management
-- 🧭 Screen Navigation
-- 🎞️ Flutter Animations
-- 🦸 Hero Transitions
-- 📱 Responsive UI
-- 🍕 Food Categories
-- 🍔 Food Details
-- 🛒 Cart Management
-- 💳 Checkout
-- 🎉 Order Success
-- 📦 Order History
-- 👤 Profile
-- 🏗️ Feature-Based Architecture
-- 🐛 Debugging & Code Improvement
+- 📱 Responsive layouts
+- 🧭 Screen navigation
+- 🎞️ Explicit animations
+- 🔄 Implicit animations
+- 🦸 Hero transitions
+- 🛒 Cart management
+- 💳 Checkout flow
+- 📦 Order history
+- 👤 Profile management
+- 💾 Local data handling
+- 🐛 Debugging and code review
 
 ---
 
-# 🎬 App Experience
+# 🍔 What is TastyBytes?
 
-<p align="center">
-  <strong>🚀 Splash → 👋 Onboarding → 🏠 Home → 🍕 Categories → 🍔 Food → 🛒 Cart → 💳 Checkout → 🎉 Success</strong>
-</p>
+TastyBytes provides a simple restaurant ordering journey:
 
 ```text
-                         🍔 TASTYBYTES
-                              │
-                              ▼
-                         🚀 SPLASH
-                              │
-                              ▼
-                        👋 ONBOARDING
-                              │
-                              ▼
-                         🏠 HOME
-                              │
-                              ▼
-                        🍕 CATEGORIES
-                              │
-                              ▼
-                       🍔 FOOD DETAILS
-                              │
-                              ▼
-                          🛒 CART
-                              │
-                              ▼
-                         💳 CHECKOUT
-                              │
-                              ▼
-                        🎉 SUCCESS
-                              │
-                              ▼
-                       📦 ORDER HISTORY
+🚀 Launch App
+     ↓
+👋 Onboarding
+     ↓
+🏠 Home
+     ↓
+🍕 Select Category
+     ↓
+🍽️ Browse Food
+     ↓
+🛒 Add to Cart
+     ↓
+💳 Checkout
+     ↓
+🎉 Order Success
+     ↓
+📦 Order History
 ````
 
----
-
-# 🎞️ Motion & Animation Showcase
-
-TastyBytes uses Flutter's animation system to make the interface feel more interactive and polished.
-
-### ✨ Animation Concepts Used
-
-* 🎬 `AnimationController`
-* 🌫️ `FadeTransition`
-* ↕️ `SlideTransition`
-* 🔍 `ScaleTransition`
-* 🔄 `AnimatedContainer`
-* 📈 `AnimatedScale`
-* 🦸 `Hero`
-* 🎯 Animation Curves
-* 🎞️ Lottie animation assets
-
----
-
-## 🎬 Explicit Animation Flow
+The application also provides a bottom navigation experience:
 
 ```text
-              📱 Screen Opens
-                    │
-                    ▼
-          🎬 AnimationController
-                    │
-          ┌─────────┴─────────┐
-          ▼                   ▼
-       🌫️ Fade              ↕️ Slide
-          │                   │
-          └─────────┬─────────┘
-                    ▼
-             ✨ Smooth Entrance
-```
-
-Example:
-
-```dart
-AnimationController(
-  vsync: this,
-  duration: const Duration(milliseconds: 600),
-);
+┌──────────┬──────────┬──────────┬──────────┐
+│ 🏠 Home  │ 📦 Orders│ 🛒 Cart  │ 👤 Profile│
+└──────────┴──────────┴──────────┴──────────┘
 ```
 
 ---
 
-## 🔄 Implicit Animation
+# 🎯 Project Goals
 
-TastyBytes uses widgets such as `AnimatedContainer` and `AnimatedScale`.
+The main goals of the project were to practice and implement:
+
+### 📱 Flutter Application Development
+
+Build a complete multi-screen restaurant application using Flutter.
+
+### 🧠 State Management
+
+Use BLoC to manage application states and user interactions.
+
+### 🎨 UI Development
+
+Create a modern restaurant interface using reusable Flutter UI patterns.
+
+### 🎞️ Motion Design
+
+Use Flutter animation APIs to make screen interactions more dynamic.
+
+### 🏗️ Architecture
+
+Organize the project using a feature-based structure.
+
+### 🧭 Navigation
+
+Connect the application screens into a complete user journey.
+
+---
+
+# ✨ Core Features
+
+## 🏠 Home
+
+The Home screen acts as the main food discovery area.
+
+### Includes:
+
+* 👋 Welcome section
+* 🍕 Food categories
+* 🍔 Popular food
+* 🖼️ Food visuals
+* ➡️ See All
+* 🛒 Cart access
+* 🎨 Restaurant-themed UI
+
+---
+
+# 🍕 Categories
+
+Users can browse food according to category.
+
+### Available Categories
+
+```text
+🍕 Pizza
+🍔 Burger
+🍗 Chicken
+🥤 Drinks
+```
+
+Category selection is handled through BLoC state management.
+
+```text
+User
+ ↓
+Tap Category
+ ↓
+SelectCategoryEvent
+ ↓
+CategoriesBloc
+ ↓
+CategorySelected
+ ↓
+BlocBuilder
+ ↓
+Updated UI
+```
+
+---
+
+# 🍽️ Food Details
+
+The Food Details screen displays the food available inside a selected category.
+
+### User Actions
+
+```text
+👀 View Food
+   ↓
+🍔 Select Food
+   ↓
+💰 View Price
+   ↓
+🛒 Add To Cart
+   ↓
+✅ Confirmation
+```
+
+Food information includes:
+
+* 🍔 Name
+* 💰 Price
+* 🖼️ Food icon/image
+* 🛒 Add to cart action
+
+---
+
+# 🛒 Cart Management
+
+The Cart screen manages selected food items.
+
+### Cart Operations
+
+```text
+➕ Increase Quantity
+➖ Decrease Quantity
+🗑️ Remove Item
+💰 Calculate Total
+💳 Continue Checkout
+```
+
+Cart state is managed through `CartBloc`.
+
+```text
+🍔 Food Details
+      ↓
+AddCartItem
+      ↓
+🧠 CartBloc
+      ↓
+📦 CartState
+      ↓
+🛒 Cart Screen
+```
+
+---
+
+# 💳 Checkout
+
+The Checkout screen provides the final order information.
+
+### Checkout Components
+
+* 📍 Delivery address
+* 🧾 Order summary
+* 💵 Cash on Delivery
+* 💳 Credit / Debit Card
+* 📱 EasyPaisa
+* ✅ Place Order
+
+### Checkout Flow
+
+```text
+🛒 Cart
+   ↓
+💳 Checkout
+   ↓
+📍 Address
+   ↓
+💰 Payment Method
+   ↓
+🧾 Review Order
+   ↓
+✅ Place Order
+   ↓
+🎉 Success
+```
+
+---
+
+# 🎉 Order Success
+
+After an order is placed, the user is taken to the Order Success screen.
+
+```text
+🛒 Cart
+   ↓
+💳 Checkout
+   ↓
+✅ Place Order
+   ↓
+🎉 Order Success
+   ↓
+🏠 Back To Home
+```
+
+---
+
+# 📦 Order History
+
+The Order History screen allows users to see their previous orders.
+
+It provides:
+
+* 📋 Order list
+* 📦 Order information
+* 💰 Order details
+* 👀 Expandable order information
+
+---
+
+# 👤 Profile
+
+The Profile screen provides account-related functionality.
+
+### Includes
+
+* 👤 Profile information
+* ✏️ Edit Profile
+* 📦 Order History
+* 📍 My Address
+* 🚪 Logout
+
+---
+
+# 🎞️ Animation & Motion Design
+
+Animation is an important part of the TastyBytes UI.
+
+The application uses both **explicit and implicit Flutter animations**.
+
+---
+
+# 🎬 Animation Types Used
+
+| Animation              | Usage                        |
+| ---------------------- | ---------------------------- |
+| 🌫️ FadeTransition     | Smooth widget entrance       |
+| ↕️ SlideTransition     | Content movement             |
+| 🔍 ScaleTransition     | Success/attention animations |
+| 🔄 AnimatedContainer   | Animated UI property changes |
+| 📈 AnimatedScale       | Navigation/icon scaling      |
+| 🦸 Hero                | Screen-to-screen transitions |
+| 🎞️ Lottie             | JSON-based animation assets  |
+| 🎯 Curves              | Natural animation movement   |
+| 🎬 AnimationController | Explicit animation control   |
+
+---
+
+# 🌫️ Fade Animation
+
+`FadeTransition` is used when content needs to appear smoothly.
+
+```dart
+FadeTransition(
+  opacity: fadeAnimation,
+  child: Container(
+    child: Text('TastyBytes'),
+  ),
+)
+```
+
+### Motion
+
+```text
+Invisible
+   ↓
+Opacity 0%
+   ↓
+Opacity 50%
+   ↓
+Opacity 100%
+   ↓
+✨ Visible
+```
+
+---
+
+# ↕️ Slide Animation
+
+`SlideTransition` is used to bring content into the screen.
+
+```dart
+SlideTransition(
+  position: slideAnimation,
+  child: Container(
+    child: Text('Welcome'),
+  ),
+)
+```
+
+### Motion
+
+```text
+        Content
+           ↓
+           ↓
+           ↓
+      ┌─────────┐
+      │  UI     │
+      └─────────┘
+           ↑
+      Final Position
+```
+
+---
+
+# 🔍 Scale Animation
+
+Scale animation is useful for success screens and important UI elements.
+
+```text
+Small
+  ↓
+Scale
+  ↓
+Normal Size
+  ↓
+✨ Appears
+```
+
+This creates a visual emphasis without changing the application's functionality.
+
+---
+
+# 🔄 AnimatedContainer
+
+`AnimatedContainer` is used for automatic transitions when a property changes.
 
 Example:
 
@@ -163,469 +419,302 @@ AnimatedContainer(
 )
 ```
 
-When the value changes:
+### Example
 
 ```text
-Old Value
-   ↓
-Property Changes
-   ↓
-AnimatedContainer
-   ↓
-✨ Flutter animates automatically
-   ↓
-New Value
+Before Selection
+┌─────────────────┐
+│ 🍕 Pizza        │
+│ White           │
+└─────────────────┘
+
+        ↓ TAP
+
+After Selection
+┌─────────────────┐
+│ 🍕 Pizza        │
+│ Yellow          │
+└─────────────────┘
+
+       ✨ Smooth
+      transition
 ```
 
 ---
 
-# 🦸 Hero Animation
+# 📈 AnimatedScale
 
-Hero transitions are used to create smooth visual movement between related screens.
+The bottom navigation uses animated scaling to provide visual feedback when navigation items change.
 
-### 🍕 Categories → Food Details
-
-```text
-┌─────────────────┐
-│ 🍕 Categories   │
-│                 │
-│      🍕         │
-└────────┬────────┘
-         │
-         │ 🦸 HERO
-         │
-         ▼
-┌─────────────────┐
-│ 🍕 Food Details │
-│                 │
-│      🍕         │
-└─────────────────┘
+```dart
+AnimatedScale(
+  scale: 1.8,
+  duration: const Duration(milliseconds: 300),
+  child: Icon(Icons.home),
+)
 ```
 
-Example:
+### Navigation Motion
+
+```text
+🏠 Home
+   ↓
+Selected
+   ↓
+📈 Scale Up
+   ↓
+✨ Visual Feedback
+```
+
+The same interaction pattern is used for:
+
+* 🏠 Home
+* 📦 Orders
+* 🛒 Cart
+* 👤 Profile
+
+---
+
+# 🦸 Hero Transition
+
+Hero animation connects related UI elements across routes.
+
+### Categories → Food Details
+
+```text
+┌────────────────────┐
+│    🍕 Categories   │
+│                    │
+│        🍕          │
+└─────────┬──────────┘
+          │
+          │ 🦸 HERO
+          │
+          ▼
+┌────────────────────┐
+│  🍕 Food Details   │
+│                    │
+│        🍕          │
+└────────────────────┘
+```
+
+The source:
 
 ```dart
 Hero(
   tag: 'Details_$name',
   child: Icon(
     icon,
-    size: 28,
   ),
 )
 ```
 
-Destination:
+The destination uses the matching tag:
 
 ```dart
 Hero(
   tag: 'Details_${widget.category}',
   child: Icon(
     Icons.local_pizza,
-    size: 40,
   ),
 )
 ```
 
-The Hero tags must match between the source and destination.
+---
+
+# 🛒 Cart Hero Transition
+
+The cart FloatingActionButton uses Flutter's built-in Hero behavior.
+
+```dart
+FloatingActionButton(
+  heroTag: 'cart',
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const CartScreen(),
+      ),
+    );
+  },
+  child: const Icon(
+    Icons.shopping_cart,
+  ),
+)
+```
+
+The `heroTag` allows the FAB to participate in a route transition without wrapping it inside another Hero.
 
 ---
 
-# 🧠 BLoC State Management
+# 🎞️ Lottie Animations
 
-TastyBytes uses **BLoC (Business Logic Component)** for application state management.
-
-BLoC separates the UI from application logic and provides a clear flow between user actions and UI updates.
-
-## 🔄 BLoC Architecture
+The project contains animation assets inside:
 
 ```text
-                👤 USER
-                   │
-                   ▼
-                ⚡ EVENT
-                   │
-                   ▼
-              🧠 BLOC
-                   │
-                   ▼
-            ⚙️ BUSINESS LOGIC
-                   │
-                   ▼
-                📦 STATE
-                   │
-                   ▼
-                🎨 UI
-                   │
-                   ▼
-             🔄 REBUILD
+assets/
+└── animation/
 ```
 
-### Simple BLoC Formula
+Example animation files include:
 
 ```text
-🎨 UI
- ↓
-⚡ Event
- ↓
-🧠 BLoC
- ↓
-📦 State
- ↓
-🎨 UI
+Bike.json
+Burger.json
+```
+
+Lottie allows JSON-based animations to be displayed inside Flutter applications.
+
+Example:
+
+```dart
+Lottie.asset(
+  'assets/animation/Burger.json',
+)
+```
+
+### Lottie Flow
+
+```text
+JSON Animation
+      ↓
+Lottie Package
+      ↓
+Flutter Widget
+      ↓
+🎞️ Animated UI
 ```
 
 ---
 
-# 🏠 Home BLoC Flow
+# 🧠 BLoC Architecture
 
-Example category selection:
+The project uses BLoC to keep UI and application logic organized.
+
+### Architecture
 
 ```text
-👆 User taps Pizza
-        │
-        ▼
+             👤 USER
+                │
+                ▼
+             ⚡ EVENT
+                │
+                ▼
+          🧠 BLOC LOGIC
+                │
+                ▼
+             📦 STATE
+                │
+                ▼
+             🎨 UI
+                │
+                ▼
+          🔄 UI REBUILDS
+```
+
+### Basic Formula
+
+```text
+UI
+ ↓
+Event
+ ↓
+BLoC
+ ↓
+State
+ ↓
+UI
+```
+
+---
+
+# 🏠 Home BLoC
+
+```text
+👆 Select Category
+       ↓
 SelectCategoryEvent
-        │
-        ▼
-     HomeBloc
-        │
-        ▼
+       ↓
+HomeBloc
+       ↓
 HomeCategoryChanged
-        │
-        ▼
-   BlocBuilder
-        │
-        ▼
-🎨 UI Updates
+       ↓
+BlocBuilder
+       ↓
+🎨 Home UI Updates
 ```
 
 ---
 
-# 🍕 Categories BLoC Flow
+# 🍕 Categories BLoC
 
 ```text
-👆 User selects category
-          │
-          ▼
+👆 Select Category
+       ↓
 SelectCategoryEvent
-          │
-          ▼
-   CategoriesBloc
-          │
-          ▼
-   CategorySelected
-          │
-          ▼
-     BlocBuilder
-          │
-          ▼
-    🎨 UI Updates
+       ↓
+CategoriesBloc
+       ↓
+CategorySelected
+       ↓
+BlocBuilder
+       ↓
+🍕 Updated Category UI
 ```
 
 ---
 
-# 🛒 Cart BLoC Flow
+# 🛒 Cart BLoC
 
 ```text
-🍔 Add Food
-     │
-     ▼
+🍔 Add Item
+     ↓
 AddCartItem
-     │
-     ▼
-  CartBloc
-     │
-     ▼
- Cart State
-     │
-     ▼
+     ↓
+CartBloc
+     ↓
+CartState
+     ↓
 🛒 Cart UI
 ```
 
-Cart actions:
-
-```text
-➕ Increase Quantity
-➖ Decrease Quantity
-🗑️ Remove Item
-💰 Calculate Total
-```
-
 ---
 
-# 💳 Checkout BLoC Flow
-
-Address:
+# 💳 Checkout BLoC
 
 ```text
-📍 Enter Address
-       ↓
+📍 Address
+     ↓
 ChangeAddress
-       ↓
+     ↓
 CheckoutBloc
-       ↓
+     ↓
 CheckoutUpdated
-       ↓
+     ↓
 🎨 UI
 ```
 
 Payment:
 
 ```text
-💵 Cash on Delivery
-💳 Credit / Debit Card
+💵 Cash
+💳 Card
 📱 EasyPaisa
-        ↓
+     ↓
 SelectPaymentMethod
-        ↓
+     ↓
 CheckoutBloc
-        ↓
+     ↓
 CheckoutUpdated
 ```
 
 ---
 
-# ✨ Main Features
+# 🏗️ Feature-Based Architecture
 
-## 🏠 Home
+The application is organized feature-by-feature.
 
-* 👋 Welcome section
-* 🍕 Food categories
-* 🍔 Popular food items
-* 🖼️ Food visuals
-* ➡️ See All categories
-* 🎨 Modern restaurant interface
-
----
-
-## 🍕 Categories
-
-Available food categories include:
-
-```text
-🍕 Pizza
-🍔 Burger
-🍗 Chicken
-🥤 Drinks
-```
-
-Users can select a category and explore its food items.
-
----
-
-## 🍽️ Food Details
-
-Users can:
-
-* 👀 View food items
-* 🍔 View food name
-* 💰 View food price
-* 🖼️ View food image/icon
-* 🛒 Add food to cart
-* ✅ Receive confirmation
-
----
-
-## 🛒 Cart
-
-The cart allows users to:
-
-* 👀 View selected items
-* ➕ Increase quantity
-* ➖ Decrease quantity
-* 🗑️ Remove items
-* 💰 Calculate total
-* ➡️ Continue to checkout
-
----
-
-## 💳 Checkout
-
-Checkout includes:
-
-* 📍 Delivery address
-* 💵 Cash on Delivery
-* 💳 Credit / Debit Card
-* 📱 EasyPaisa
-* 🧾 Order summary
-* ✅ Place Order
-
----
-
-## 🎉 Order Success
-
-After successfully placing an order:
-
-```text
-🛒 Cart
-  ↓
-💳 Checkout
-  ↓
-✅ Place Order
-  ↓
-🎉 Order Success
-```
-
----
-
-## 📦 Order History
-
-Users can:
-
-* 📋 View previous orders
-* 👀 View order information
-* 📦 Review order details
-
----
-
-## 👤 Profile
-
-Profile includes:
-
-* 👤 User information
-* ✏️ Edit Profile
-* 📦 Order History
-* 📍 My Address
-* 🚪 Logout
-
----
-
-# 🧭 Complete Navigation Flow
-
-```text
-                         🚀 SPLASH
-                             │
-                             ▼
-                       👋 ONBOARDING
-                             │
-                             ▼
-                       🏠 MAIN SCREEN
-                             │
-        ┌────────────────────┼────────────────────┐
-        │                    │                    │
-        ▼                    ▼                    ▼
-     🏠 HOME              📦 ORDERS             🛒 CART
-        │                                         │
-        ▼                                         ▼
-   🍕 CATEGORIES                              💳 CHECKOUT
-        │                                         │
-        ▼                                         ▼
- 🍔 FOOD DETAILS                              🎉 SUCCESS
-        │
-        ▼
-     🛒 CART
-        │
-        ▼
-   💳 CHECKOUT
-```
-
----
-
-# 📱 Application Screens
-
-### 🚀 Splash Screen
-
-Application launch and TastyBytes branding.
-
-### 👋 Onboarding Screen
-
-Introduces the application and its food-ordering experience.
-
-### 🏠 Home Screen
-
-Main food discovery and navigation screen.
-
-### 🍕 Categories Screen
-
-Food category selection.
-
-### 🍽️ Food Details Screen
-
-Food items and add-to-cart functionality.
-
-### 🛒 Cart Screen
-
-Cart items, quantities, and total amount.
-
-### 💳 Checkout Screen
-
-Address, payment method, order summary, and order placement.
-
-### 🎉 Order Success Screen
-
-Successful order confirmation.
-
-### 📦 Order History Screen
-
-Previously placed orders.
-
-### 👤 Profile Screen
-
-User profile and account-related options.
-
----
-
-# 🎨 Design System
-
-## 🎨 Primary Colors
-
-```text
-🟨 Yellow   #FFC107
-⬛ Black    #111111
-⬜ White    #FFFFFF
-🩶 Grey     #757575
-🩶 Light    #F5F5F5
-🟩 Success  #4CAF50
-🟥 Error    #E53935
-```
-
-The project uses a centralized `AppColors` class for consistent UI styling.
-
----
-
-# 📐 Responsive Design
-
-The project uses **Flutter ScreenUtil** for responsive sizing.
-
-### 🔤 Text
-
-```dart
-fontSize: 20.sp
-```
-
-### ↔️ Width
-
-```dart
-width: 100.w
-```
-
-### ↕️ Height
-
-```dart
-height: 50.h
-```
-
-### 📏 Padding
-
-```dart
-EdgeInsets.all(16.w)
-```
-
-### 🔘 Border Radius
-
-```dart
-BorderRadius.circular(15.r)
-```
-
-This allows the interface to adapt to different screen dimensions.
-
----
-
-# 🏗️ Project Architecture
-
-TastyBytes follows a **feature-based architecture**.
-
-Each feature contains its own BLoC and screen files.
+Each feature contains its own:
 
 ```text
 Feature
@@ -639,9 +728,11 @@ Feature
     └── feature_screen.dart
 ```
 
+This keeps UI and state-management code separated.
+
 ---
 
-# 📂 Complete `lib` Structure
+# 📂 Complete Project Structure
 
 ```text
 lib/
@@ -649,7 +740,6 @@ lib/
 ├── main.dart
 │
 ├── core/
-│   │
 │   ├── app_theme/
 │   │   └── app_theme.dart
 │   │
@@ -747,35 +837,179 @@ lib/
 assets/
 │
 ├── animation/
+│   ├── Bike.json
+│   └── Burger.json
 │
 ├── food/
+│   ├── burger.png
+│   ├── pizza.png
+│   ├── pasta.png
+│   └── drink.png
 │
 ├── logo/
+│   └── logo.png
 │
 └── onboarding/
+    ├── food.png
+    ├── delivery.png
+    └── enjoy.png
 ```
-
-### 🎞️ Animation Assets
-
-Used for application animation experiences.
-
-### 🍔 Food Assets
-
-Contains food-related images.
-
-### 🍔 Logo Assets
-
-Contains TastyBytes branding.
-
-### 👋 Onboarding Assets
-
-Contains onboarding illustrations.
 
 ---
 
-# 🧰 Technology Stack
+# 🎨 App Theme
 
-## 📱 Mobile Development
+The application uses a centralized theme system.
+
+```text
+core/
+└── app_theme/
+    └── app_theme.dart
+```
+
+This allows the application theme to be managed separately from individual screens.
+
+---
+
+# 🎨 Color Management
+
+```text
+core/
+└── constants/
+    └── app_colors.dart
+```
+
+Main colors:
+
+```text
+🟨 Yellow  #FFC107
+⬛ Black   #111111
+⬜ White   #FFFFFF
+🩶 Grey    #757575
+🩶 Light   #F5F5F5
+🟩 Success #4CAF50
+🟥 Error   #E53935
+```
+
+---
+
+# 📱 Responsive UI
+
+TastyBytes uses `flutter_screenutil` to support responsive layouts.
+
+### Text
+
+```dart
+fontSize: 20.sp
+```
+
+### Width
+
+```dart
+width: 100.w
+```
+
+### Height
+
+```dart
+height: 50.h
+```
+
+### Padding
+
+```dart
+EdgeInsets.all(16.w)
+```
+
+### Radius
+
+```dart
+BorderRadius.circular(15.r)
+```
+
+---
+
+# 🧭 Navigation Architecture
+
+The application uses Flutter navigation to connect individual features.
+
+Example:
+
+```dart
+Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => const CartScreen(),
+  ),
+);
+```
+
+### Navigation Pattern
+
+```text
+🏠 Home
+  ↓
+🍕 Categories
+  ↓
+🍽️ Food Details
+  ↓
+🛒 Cart
+  ↓
+💳 Checkout
+  ↓
+🎉 Order Success
+```
+
+---
+
+# 📱 Bottom Navigation
+
+The MainScreen provides four primary sections:
+
+```text
+🏠 Home
+📦 Orders
+🛒 Cart
+👤 Profile
+```
+
+The navigation icons use animated scaling for visual feedback.
+
+```text
+Unselected
+   ↓
+Normal Size
+   ↓
+Selected
+   ↓
+📈 Scale Animation
+```
+
+---
+
+# 💾 Local Data Management
+
+The project includes local data handling with **Sqflite**.
+
+Sqflite can be used for storing structured application data locally.
+
+```text
+Flutter App
+    ↓
+BLoC
+    ↓
+Local Data
+    ↓
+Sqflite
+    ↓
+Local Database
+```
+
+---
+
+# 🛠️ Technology Stack
+
+## 📱 Mobile
 
 * Flutter
 * Dart
@@ -805,16 +1039,18 @@ Contains onboarding illustrations.
 
 * Sqflite
 
-## 🔧 Development Tools
+## 🔧 Tools
 
 * Android Studio
-* Visual Studio Code
+* VS Code
 * Git
 * GitHub
 
 ---
 
-# 📦 Main Dependencies
+# 📦 Dependencies
+
+Main packages used in the project:
 
 ```yaml
 dependencies:
@@ -828,7 +1064,7 @@ dependencies:
   lottie:
 ```
 
-Install packages:
+Install dependencies:
 
 ```bash
 flutter pub get
@@ -838,13 +1074,13 @@ flutter pub get
 
 # 🚀 Getting Started
 
-## 1️⃣ Clone Repository
+## 1️⃣ Clone the Repository
 
 ```bash
 git clone YOUR_REPOSITORY_URL
 ```
 
-## 2️⃣ Open Project
+## 2️⃣ Open the Project
 
 ```bash
 cd resturant_app
@@ -856,13 +1092,13 @@ cd resturant_app
 flutter pub get
 ```
 
-## 4️⃣ Check Flutter Environment
+## 4️⃣ Check Flutter Setup
 
 ```bash
 flutter doctor
 ```
 
-## 5️⃣ Run Application
+## 5️⃣ Run the Application
 
 ```bash
 flutter run
@@ -870,15 +1106,13 @@ flutter run
 
 ---
 
-# 📦 Build APK
-
-Generate a release APK:
+# 📦 Build Release APK
 
 ```bash
 flutter build apk --release
 ```
 
-APK output:
+Generated APK:
 
 ```text
 build/app/outputs/flutter-apk/app-release.apk
@@ -886,27 +1120,27 @@ build/app/outputs/flutter-apk/app-release.apk
 
 ---
 
-# 🔧 Git & GitHub Workflow
+# 🔧 Git Workflow
 
-Check project status:
+Check status:
 
 ```bash
 git status
 ```
 
-Add project changes:
+Add changes:
 
 ```bash
 git add .
 ```
 
-Commit changes:
+Commit:
 
 ```bash
 git commit -m "Fix bugs and review code"
 ```
 
-Push changes:
+Push:
 
 ```bash
 git push origin main
@@ -914,45 +1148,68 @@ git push origin main
 
 ---
 
-# 🐛 Debugging & Code Improvement
+# 🐛 Development & Debugging
 
-During development, different application issues were identified and resolved, including:
+During development, the project involved continuous testing, debugging, and code review.
 
-* 🔧 Flutter code issues
-* 🧠 BLoC state-management issues
+Areas worked on include:
+
+* 🔧 Flutter code fixes
+* 🧠 BLoC state issues
 * 🧭 Navigation issues
-* 🦸 Hero tag conflicts
-* 🎨 UI alignment issues
-* 📱 Responsive layout adjustments
+* 🦸 Hero transition issues
+* 🎨 UI alignment
+* 📱 Responsive layouts
 * 🛒 Cart state updates
+* ⚙️ Screen integration
 * 🧹 Code structure improvements
-* ⚙️ Application functionality fixes
 
 ---
 
-# 🎓 Learning Outcomes
+# 🎓 Week 7 Internship Learning
 
-This project provided practical experience in:
+The project provided practical experience with:
 
-* 🐦 Flutter Development
-* 🎯 Dart Programming
-* 🧠 BLoC State Management
-* ⚡ Event & State Architecture
-* 🎨 UI/UX Development
-* 🧭 Navigation
-* 🎞️ Motion & Animation
-* 🦸 Hero Transitions
-* 📱 Responsive Design
-* 🛒 Cart Management
-* 💳 Checkout Flow
-* 📦 Order Management
-* 🐛 Debugging
-* 🔧 Git & GitHub
-* 🏗️ Feature-Based Architecture
+```text
+🐦 Flutter
+   ↓
+🎨 UI Development
+   ↓
+🧠 BLoC State Management
+   ↓
+🧭 Navigation
+   ↓
+🎞️ Animation
+   ↓
+🛒 Cart
+   ↓
+💳 Checkout
+   ↓
+🍔 Complete Restaurant App
+```
+
+### Key Learning Areas
+
+* Flutter screen development
+* Dart programming
+* BLoC architecture
+* Events and states
+* `BlocBuilder`
+* `BlocProvider`
+* Navigation
+* Hero animations
+* Explicit animations
+* Implicit animations
+* Lottie animations
+* Responsive UI
+* Local data management
+* Git and GitHub
+* Debugging
+* Code review
 
 ---
 
-# 🏢 Internship Project
+# 🏢 Internship Information
 
 ## Owasoft Technologies
 
@@ -964,92 +1221,56 @@ This project provided practical experience in:
 
 **Framework:** Flutter
 
-**Language:** Dart
+**Programming Language:** Dart
 
 **State Management:** BLoC
 
-**Focus:** UI, State Management, Navigation, Animation & Application Development
-
----
-
-# 📅 Week 7 Development Focus
+**Main Focus:**
 
 ```text
-             🐦 Flutter
-                 │
-                 ▼
-             🎨 UI/UX
-                 │
-                 ▼
-        🧠 BLoC Architecture
-                 │
-                 ▼
-          🧭 Navigation
-                 │
-                 ▼
-          🎞️ Animation
-                 │
-                 ▼
-        🛒 Food Ordering
-                 │
-                 ▼
-           🍔 TastyBytes
+🎨 UI
+🧠 BLoC
+🧭 Navigation
+🎞️ Animation
+📱 Responsive Design
+🛒 Food Ordering
 ```
 
 ---
 
-# 👨‍💻 About The Developer
+# 👨‍💻 Developer
 
-<h2 align="center">Saud Masood</h2>
+## Saud Masood
 
-<p align="center">
-  <strong>🎓 BSCS Graduate</strong>
-</p>
+🎓 **BSCS Graduate**
 
-<p align="center">
-  🐦 Flutter Developer &nbsp;•&nbsp;
-  🤖 AI/ML Enthusiast &nbsp;•&nbsp;
-  🏗️ Software Engineering
-</p>
+🐦 **Flutter Developer**
 
-I am a **BSCS Graduate** interested in building modern software applications and developing practical skills across **Flutter Development, Artificial Intelligence & Machine Learning, and Software Engineering**.
+🤖 **AI/ML Enthusiast**
 
-My development focus includes creating mobile applications with clean UI, structured architecture, state management, and practical software engineering principles.
+🏗️ **Software Engineering**
 
----
+I am a **BSCS Graduate** interested in building modern software applications and developing practical skills in:
 
-# 💻 Technical Interests
-
-```text
-🐦 Flutter Development
-🎯 Dart
-📱 Mobile Application Development
-
-🤖 Artificial Intelligence
-🧠 Machine Learning
-🧬 Deep Learning
-
-🏗️ Software Engineering
-🌐 Web Development
-🔥 Firebase
-🗄️ Databases
-
-🔧 Git
-🐙 GitHub
-```
+* 🐦 Flutter Development
+* 🤖 Artificial Intelligence
+* 🧠 Machine Learning
+* 🏗️ Software Engineering
+* 🌐 Web Development
+* 📱 Mobile Application Development
 
 ---
 
-# 🛠️ Technical Skills
+# 💻 Technical Skills
 
-### 📱 Mobile
+### 📱 Mobile Development
 
 * Flutter
 * Dart
 * Firebase
 * Sqflite
 
-### 🤖 AI / ML
+### 🤖 AI / Machine Learning
 
 * Python
 * TensorFlow
@@ -1058,7 +1279,7 @@ My development focus includes creating mobile applications with clean UI, struct
 * MediaPipe
 * TensorFlow Lite
 
-### 🌐 Web
+### 🌐 Web Development
 
 * HTML
 * CSS
@@ -1069,7 +1290,7 @@ My development focus includes creating mobile applications with clean UI, struct
 * MongoDB
 * SQL
 
-### 🔧 Tools
+### 🛠️ Development Tools
 
 * Git
 * GitHub
@@ -1084,56 +1305,60 @@ My development focus includes creating mobile applications with clean UI, struct
 
 <p align="center">
 
-📧 <strong>Email:</strong> [YOUR_EMAIL@example.com](mailto:YOUR_EMAIL@example.com)
-
+📧 <strong>Email</strong><br>
+saudmasood974@gmail.com
 <br><br>
 
-📱 <strong>Phone:</strong> +92 XXX XXXXXXX
-
+📱 <strong>Phone</strong><br>
++93 3065050974
 <br><br>
 
-🐙 <strong>GitHub:</strong> github.com/SaudMasood
+🐙 <strong>GitHub</strong><br>
+github.com/SaudMasood
 
 </p>
 
-> Replace the email and phone placeholders with the contact details you want to publish on GitHub.
+> Replace the email and phone placeholders with the contact details you want to make public.
 
 ---
 
 # 🔮 Future Improvements
 
-Possible future versions can include:
+Future versions of TastyBytes could include:
 
 * 🔐 Firebase Authentication
-* ☁️ Cloud Firestore
+* ☁️ Firebase Firestore
 * 🔔 Push Notifications
-* 🌐 REST API Integration
-* 💳 Online Payment Gateway
-* 🔎 Food Search
-* ❤️ Favorite Foods
-* ⭐ Reviews & Ratings
-* 👨‍🍳 Restaurant Management
-* 🛠️ Admin Dashboard
-* ☁️ Cloud Food Images
-* 📍 Real-Time Order Tracking
+* 🌐 REST API integration
+* 💳 Online payment gateway
+* 🔎 Food search
+* ❤️ Favorite foods
+* ⭐ Ratings and reviews
+* 🏪 Restaurant management
+* 🛠️ Admin dashboard
+* ☁️ Cloud-based food images
+* 📍 Real-time order tracking
+* 👨‍🍳 Restaurant/admin features
 
 ---
 
-# 📊 Project Information
+# 📊 Project Summary
 
-| 📌 Category         | Details                |
+| Category            | Details                |
 | ------------------- | ---------------------- |
-| 🍔 Project          | TastyBytes             |
+| 🍔 Application      | TastyBytes             |
 | 🏢 Organization     | Owasoft Technologies   |
 | 🎓 Internship       | Flutter Development    |
-| 📅 Week             | Week 7                 |
+| 📅 Project          | Week 7                 |
 | 📱 Framework        | Flutter                |
 | 🎯 Language         | Dart                   |
 | 🧠 State Management | BLoC                   |
-| 💾 Local Storage    | Sqflite                |
+| 💾 Database         | Sqflite                |
 | 📐 Responsive UI    | ScreenUtil             |
 | 🎞️ Animation       | Flutter Animation APIs |
-| 🦸 Transitions      | Hero                   |
+| 🦸 Transition       | Hero                   |
+| 🎬 Motion           | Explicit + Implicit    |
+| 🎞️ JSON Animation  | Lottie                 |
 | 🧭 Navigation       | Flutter Navigator      |
 | 🔧 Version Control  | Git & GitHub           |
 | 📱 Platform         | Android / iOS          |
@@ -1144,13 +1369,13 @@ Possible future versions can include:
 
 <p align="center">
 
-🟢 <strong>Development Project</strong>
+🟢 <strong>Week 7 Internship Project</strong>
 
 </p>
 
-TastyBytes was developed as part of my **Week 7 Flutter Development Internship at Owasoft Technologies**.
+TastyBytes is a practical Flutter restaurant application developed during my **Week 7 Flutter Development Internship at Owasoft Technologies**.
 
-The project demonstrates practical implementation of **Flutter UI, BLoC state management, responsive design, navigation, animations, cart management, checkout functionality, and feature-based architecture**.
+The project demonstrates the implementation of a complete food-ordering application with **modern UI, BLoC state management, responsive layouts, navigation, motion animations, Hero transitions, cart management, checkout, order history, and profile functionality**.
 
 ---
 
@@ -1158,7 +1383,11 @@ The project demonstrates practical implementation of **Flutter UI, BLoC state ma
 
 <p align="center">
 
-🐦 Flutter + 🎯 Dart + 🧠 BLoC + 🎞️ Animations
+🐦 Flutter  • 
+🎯 Dart  • 
+🧠 BLoC  • 
+🎞️ Animation  • 
+📱 Responsive UI
 
 </p>
 
@@ -1176,7 +1405,7 @@ Built with ❤️ by **Saud Masood**
 
 <p align="center">
 
-⭐ <strong>If you find this project useful, consider giving it a star!</strong> ⭐
+⭐ <strong>If you like this project, consider giving it a star!</strong> ⭐
 
 </p>
 ```

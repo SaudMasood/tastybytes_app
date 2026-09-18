@@ -1318,7 +1318,6 @@ github.com/SaudMasood
 
 </p>
 
-> Replace the email and phone placeholders with the contact details you want to make public.
 
 ---
 
